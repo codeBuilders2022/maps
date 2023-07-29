@@ -1,216 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-    <title>Maps</title>
-</head>
-<body>
-    <div class="container">
-        <section class="secct_left">
-            <div class="ctn_header">
-                <h1 class="title_zone">Zonas Parco</h1>
-                <input type="text" class="input_header" placeholder="Buscar">
-            </div>
-            <div class="ctn_states">
-                <div id="block1">
-                  <!-- Aguascalientes -->
-                  <div class="btn_select" onclick="showOptions('block1', 'Aguascalientes')">
-                    <h3>Aguascalientes</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block2">
-                  <!-- Baja California -->
-                  <div class="btn_select" onclick="showOptions('block2','Baja California')">
-                    <h3>Baja California</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block3">
-                  <!-- Chiapas -->
-                  <div class="btn_select" onclick="showOptions('block3', 'Chiapas')">
-                    <h3>Chiapas</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block4">
-                  <!-- Chihuahua -->
-                  <div class="btn_select" onclick="showOptions('block4', 'Chihuahua')">
-                    <h3>Chihuahua</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block5">
-                  <!-- Ciudad de México -->
-                  <div class="btn_select" onclick="showOptions('block5', 'Ciudad de México')">
-                    <h3>Ciudad de México</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block6">
-                  <!-- Coahuila -->
-                  <div class="btn_select" onclick="showOptions('block6', 'Coahuila')">
-                    <h3>Coahuila</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block7">
-                  <!-- Colima -->
-                  <div class="btn_select" onclick="showOptions('block7', 'Colima')">
-                    <h3>Colima</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block8">
-                  <!-- Estado de México -->
-                  <div class="btn_select" onclick="showOptions('block8', 'Estado de México')">
-                    <h3>Estado de México</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block9">
-                  <!-- Guanajuato -->
-                  <div class="btn_select" onclick="showOptions('block9', 'Guanajuato')">
-                    <h3>Guanajuato</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block10">
-                  <!-- Guerrero -->
-                  <div class="btn_select" onclick="showOptions('block10', 'Guerrero')">
-                    <h3>Guerrero</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block11">
-                  <!-- Hidalgo -->
-                  <div class="btn_select" onclick="showOptions('block11', 'Hidalgo')">
-                    <h3>Hidalgo</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block12">
-                  <!-- Jalisco -->
-                  <div class="btn_select" onclick="showOptions('block12', 'Jalisco')">
-                    <h3>Jalisco</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block13">
-                  <!-- Michoacán -->
-                  <div class="btn_select" onclick="showOptions('block13', 'Michoacán')">
-                    <h3>Michoacán</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block14">
-                  <!-- Morelos -->
-                  <div class="btn_select" onclick="showOptions('block14', 'Morelos')">
-                    <h3>Morelos</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block15">
-                  <!-- Nuevo León -->
-                  <div class="btn_select" onclick="showOptions('block15', 'Nuevo León')">
-                    <h3>Nuevo León</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block16">
-                  <!-- Puebla -->
-                  <div class="btn_select" onclick="showOptions('block16', 'Puebla')">
-                    <h3>Puebla</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block17">
-                  <!-- Querétaro -->
-                  <div class="btn_select" onclick="showOptions('block17', 'Querétaro')">
-                    <h3>Querétaro</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block18">
-                  <!-- Quintana Roo -->
-                  <div class="btn_select" onclick="showOptions('block18', 'Quintana Roo')">
-                    <h3>Quintana Roo</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block19">
-                  <!-- San Luis Potosí -->
-                  <div class="btn_select" onclick="showOptions('block19', 'San Luis Potosí')">
-                    <h3>San Luis Potosí</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block20">
-                  <!-- Sinaloa -->
-                  <div class="btn_select" onclick="showOptions('block20', 'Sinaloa')">
-                    <h3>Sinaloa</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block21">
-                  <!-- Sonora -->
-                  <div class="btn_select" onclick="showOptions('block21', 'Sonora')">
-                    <h3>Sonora</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block22">
-                  <!-- Tamaulipas -->
-                  <div class="btn_select" onclick="showOptions('block22', 'Tamaulipas')">
-                    <h3>Tamaulipas</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-                <div id="block23">
-                  <!-- Veracruz -->
-                  <div class="btn_select" onclick="showOptions('block23', 'Veracruz')">
-                    <h3>Veracruz</h3>
-                    <img src="assets/arrowDown.png" alt="" class="img_arrow">
-                  </div>
-                  <ul class="ctn_ul" style="display: none;"></ul>
-                </div>
-              </div>
-        </section>
-        <section class="secct_rigth">
-            <iframe 
-                class="iframe_map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59726.31335850192!2d-103.37661273022097!3d20.673867262478304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b18cb52fd39b%3A0xd63d9302bf865750!2sGuadalajara%2C%20Jal.!5e0!3m2!1ses!2smx!4v1690511353125!5m2!1ses!2smx" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-        </section>
 
-       <script src="./index.js"></script>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <title>Maps</title>
+</head>
+
+<body>
+  <div class="container">
+    <section class="secct_left">
+      <div class="ctn_header">
+        <h1 class="title_zone">Zonas Parco</h1>
+        <input type="text" class="input_header" placeholder="Buscar">
+      </div>
+      <div class="ctn_states">
+        <div id="block1">
+          <!-- Aguascalientes -->
+          <div class="btn_select" onclick="showOptions('block1', 'Aguascalientes')">
+            <h3>Aguascalientes</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block2">
+          <!-- Baja California -->
+          <div class="btn_select" onclick="showOptions('block2','Baja California')">
+            <h3>Baja California</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block3">
+          <!-- Chiapas -->
+          <div class="btn_select" onclick="showOptions('block3', 'Chiapas')">
+            <h3>Chiapas</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block4">
+          <!-- Chihuahua -->
+          <div class="btn_select" onclick="showOptions('block4', 'Chihuahua')">
+            <h3>Chihuahua</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block5">
+          <!-- Ciudad de México -->
+          <div class="btn_select" onclick="showOptions('block5', 'Ciudad de México')">
+            <h3>Ciudad de México</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block6">
+          <!-- Coahuila -->
+          <div class="btn_select" onclick="showOptions('block6', 'Coahuila')">
+            <h3>Coahuila</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block7">
+          <!-- Colima -->
+          <div class="btn_select" onclick="showOptions('block7', 'Colima')">
+            <h3>Colima</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block8">
+          <!-- Estado de México -->
+          <div class="btn_select" onclick="showOptions('block8', 'Estado de México')">
+            <h3>Estado de México</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block9">
+          <!-- Guanajuato -->
+          <div class="btn_select" onclick="showOptions('block9', 'Guanajuato')">
+            <h3>Guanajuato</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block10">
+          <!-- Guerrero -->
+          <div class="btn_select" onclick="showOptions('block10', 'Guerrero')">
+            <h3>Guerrero</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block11">
+          <!-- Hidalgo -->
+          <div class="btn_select" onclick="showOptions('block11', 'Hidalgo')">
+            <h3>Hidalgo</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block12">
+          <!-- Jalisco -->
+          <div class="btn_select" onclick="showOptions('block12', 'Jalisco')">
+            <h3>Jalisco</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block13">
+          <!-- Michoacán -->
+          <div class="btn_select" onclick="showOptions('block13', 'Michoacán')">
+            <h3>Michoacán</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block14">
+          <!-- Morelos -->
+          <div class="btn_select" onclick="showOptions('block14', 'Morelos')">
+            <h3>Morelos</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block15">
+          <!-- Nuevo León -->
+          <div class="btn_select" onclick="showOptions('block15', 'Nuevo León')">
+            <h3>Nuevo León</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block16">
+          <!-- Puebla -->
+          <div class="btn_select" onclick="showOptions('block16', 'Puebla')">
+            <h3>Puebla</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block17">
+          <!-- Querétaro -->
+          <div class="btn_select" onclick="showOptions('block17', 'Querétaro')">
+            <h3>Querétaro</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block18">
+          <!-- Quintana Roo -->
+          <div class="btn_select" onclick="showOptions('block18', 'Quintana Roo')">
+            <h3>Quintana Roo</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block19">
+          <!-- San Luis Potosí -->
+          <div class="btn_select" onclick="showOptions('block19', 'San Luis Potosí')">
+            <h3>San Luis Potosí</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block20">
+          <!-- Sinaloa -->
+          <div class="btn_select" onclick="showOptions('block20', 'Sinaloa')">
+            <h3>Sinaloa</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block21">
+          <!-- Sonora -->
+          <div class="btn_select" onclick="showOptions('block21', 'Sonora')">
+            <h3>Sonora</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block22">
+          <!-- Tamaulipas -->
+          <div class="btn_select" onclick="showOptions('block22', 'Tamaulipas')">
+            <h3>Tamaulipas</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+        <div id="block23">
+          <!-- Veracruz -->
+          <div class="btn_select" onclick="showOptions('block23', 'Veracruz')">
+            <h3>Veracruz</h3>
+            <img src="assets/arrowDown.png" alt="" class="img_arrow">
+          </div>
+          <ul class="ctn_ul" style="display: none;"></ul>
+        </div>
+      </div>
+    </section>
+    <section class="secct_rigth" id="map">
+      <iframe id="mapIframe" class="iframe_map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59726.31335850192!2d-103.37661273022097!3d20.673867262478304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b18cb52fd39b%3A0xd63d9302bf865750!2sGuadalajara%2C%20Jal.!5e0!3m2!1ses!2smx!4v1690511353125!5m2!1ses!2smx"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+
+    <script src="./index.js"></script>
+    <!-- <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script> -->
+  </div>
 </body>
+
 </html>
