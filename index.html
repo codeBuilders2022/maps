@@ -13,7 +13,7 @@
     <section class="secct_left">
       <div class="ctn_header">
         <h1 class="title_zone">Zonas Parco</h1>
-        <input type="text" class="input_header" placeholder="Buscar">
+        <input type="text" class="input_header" placeholder="Buscar" id="search-input">
       </div>
       <div class="ctn_states">
         <div id="block1">
@@ -202,16 +202,16 @@
         </div>
       </div>
     </section>
-    <section class="secct_rigth" id="map">
-      <iframe id="mapIframe" class="iframe_map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59726.31335850192!2d-103.37661273022097!3d20.673867262478304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b18cb52fd39b%3A0xd63d9302bf865750!2sGuadalajara%2C%20Jal.!5e0!3m2!1ses!2smx!4v1690511353125!5m2!1ses!2smx"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
+
+    <!-- Map secction -->
+    <section class="secct_rigth">
+      <div class="iframe_map" id="map"></div>
     </section>
 
     <script src="./index.js"></script>
-    <!-- <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script> -->
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWvMSFfdIFwmNTRKXijKzXxd3jTCYqCvM&libraries=places&callback=initMap">
+    </script>
   </div>
 </body>
 

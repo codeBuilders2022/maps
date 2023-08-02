@@ -1,3 +1,13 @@
+
+let map;
+const coordinates = { lat: 20.662529355164256, lng: -103.35292770414168 }
+let marker
+let autoComplete
+let idInput = document.getElementById("search-input")
+let office
+let address
+
+
 // Data for states and their municipalities with respective addresses
 var stateOffices = {
   "Aguascalientes": [
@@ -210,66 +220,154 @@ var stateOffices = {
 };
 
 // Function to generate and display office options for the selected state
+// function showOptions(blockId, selectedState) {
+//   var officeList = document.getElementById(blockId).querySelector(".ctn_ul");
+//   var isDisplaying = officeList.style.display === "block";
+
+//   // Hide all dropdowns first
+//   var allLists = document.querySelectorAll(".ctn_ul");
+//   for (var i = 0; i < allLists.length; i++) {
+//     allLists[i].style.display = "none";
+//   }
+
+//   // Toggle the visibility of office options when clicking the button
+//   if (!isDisplaying) {
+//     officeList.innerHTML = ""; // Clear the list to avoid duplicates
+
+//     // Generate office options for the selected state
+//     var offices = stateOffices[selectedState];
+//     for (var i = 0; i < offices.length; i++) {
+//       var office = offices[i].office;
+//       var address = offices[i].address;
+//       var li = document.createElement("li");
+//       li.textContent = office;
+//       // Use a closure to maintain the correct value of 'address' for each office
+//       li.onclick = (function (address) {
+//         return function () {
+//           getAddress(this, address);
+//         };
+//       })(address);
+//       officeList.appendChild(li);
+//     }
+
+//     // Show the dropdown
+//     officeList.style.display = "block";
+//   }
+// }
+
 function showOptions(blockId, selectedState) {
-  var officeList = document.getElementById(blockId).querySelector(".ctn_ul");
-  var isDisplaying = officeList.style.display === "block";
-
-  // Hide all dropdowns first
-  var allLists = document.querySelectorAll(".ctn_ul");
-  for (var i = 0; i < allLists.length; i++) {
-    allLists[i].style.display = "none";
-  }
-
-  // Toggle the visibility of office options when clicking the button
-  if (!isDisplaying) {
-    officeList.innerHTML = ""; // Clear the list to avoid duplicates
-
-    // Generate office options for the selected state
-    var offices = stateOffices[selectedState];
-    for (var i = 0; i < offices.length; i++) {
-      var office = offices[i].office;
-      var address = offices[i].address;
-      var li = document.createElement("li");
-      li.textContent = office;
-      // Use a closure to maintain the correct value of 'address' for each office
-      li.onclick = (function (address) {
-        return function () {
-          getAddress(this, address);
-        };
-      })(address);
-      officeList.appendChild(li);
+    var officeList = document.getElementById(blockId).querySelector(".ctn_ul");
+    var isDisplaying = officeList.style.display === "block";
+  
+    // Hide all dropdowns first
+    var allLists = document.querySelectorAll(".ctn_ul");
+    for (var i = 0; i < allLists.length; i++) {
+      allLists[i].style.display = "none";
     }
-
-    // Show the dropdown
-    officeList.style.display = "block";
+  
+    // Toggle the visibility of office options when clicking the button
+    if (!isDisplaying) {
+      officeList.innerHTML = ""; // Clear the list to avoid duplicates
+  
+      // Generate office options for the selected state
+      var offices = stateOffices[selectedState];
+      for (var i = 0; i < offices.length; i++) {
+        var office = offices[i].office;
+        var address = offices[i].address;
+        var li = document.createElement("li");
+        li.textContent = office;
+        // Use a closure to maintain the correct value of 'address' for each office
+        li.onclick = (function (address) {
+          return function () {
+            getAddress(this, address);
+          };
+        })(address);
+        officeList.appendChild(li);
+      }
+  
+      // Show the dropdown
+      officeList.style.display = "block";
+    }
   }
-}
+  
 
-function getAddress(liElement, address) {
-  console.log("Selected Office: " + liElement.innerText);
-  console.log("Address: " + address);
-  // You can store the selected address in a variable, display it on the website, or send it to the server.
-}
+  function getAddress(liElement, address) {
+    office = liElement.innerHTML
+    idInput.value = address;
+    updateMapWithAddress(address);
+  }
+  
 
-function iniciarMap() {
-  var coord = { lat: 20.6829, lng: -103.3253 };
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 16,
-    center: coord
+  const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let labelIndex = 0;
+  
+
+async function initMap() {
+  //@ts-ignore
+  const { Map } = await google.maps.importLibrary("maps"); 
+  map = new Map(document.getElementById("map"), {
+    center: coordinates,
+    zoom: 17,
   });
 
-  var image = {
-    url: './assets/marker.png',
-    size: new google.maps.Size(32, 32), // Tamaño de la imagen
-    origin: new google.maps.Point(0, 0), // Punto de origen de la imagen
-    anchor: new google.maps.Point(16, 32) // Punto de anclaje de la imagen (centro inferior)
-  };
+  const markerOptions = {
+      position: coordinates,
+      icon: "./assets/marker.png",
+    //   animation: google.maps.Animation.BOUNCE
+  }
 
-  var marker = new google.maps.Marker({
-    position: coord,
-    map: map,
-    icon: image
+  marker = new google.maps.Marker(markerOptions);
 
+  marker.setMap(map)
+  
+  initAutoCompleted()
 
-  });
 }
+
+function updateMapWithAddress(address) {
+    if (typeof google === "undefined" || typeof google.maps === "undefined") {
+      return;
+    }
+  
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: address }, function (results, status) {
+      if (status === "OK") {
+        var location = results[0].geometry.location;
+        map.setCenter(location);
+        marker.setPosition(location);
+        marker.setLabel(office)
+      } else {
+        console.error("Geocode was not successful for the following reason:", status);
+      }
+    });
+  }
+  
+
+  function initAutoCompleted() {
+    autoComplete = new google.maps.places.Autocomplete(idInput);
+    marker.setLabel(null)
+    autoComplete.addListener("place_changed", function () {
+      const place = autoComplete.getPlace();
+      if (place && place.geometry) {
+        updateMapWithAddress(place.formatted_address);
+      }
+    });
+  }
+  
+
+
+// function initAutoCompleted(){
+
+//     autoComplete = new google.maps.places.Autocomplete(idInput)
+      
+//     autoComplete.addListener("place_changed", function(){
+//         const place = autoComplete.getPlace()
+//         map.setCenter(place.geometry.location)
+//         marker.setPosition(place.geometry.location)
+//         // marker.title = office
+//     })
+// }
+
+
+
+initMap();
