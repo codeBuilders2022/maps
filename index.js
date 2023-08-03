@@ -1,6 +1,6 @@
 
 let map;
-const coordinates = { lat: 20.662529355164256, lng: -103.35292770414168 }
+const coordinates = { lat: 20.711368025943948, lng: -103.41264120450253 }  //Andares, latitud y longitud
 let marker
 let autoComplete
 let idInput = document.getElementById("search-input")
@@ -219,41 +219,6 @@ var stateOffices = {
   // You can add more states and municipalities here
 };
 
-// Function to generate and display office options for the selected state
-// function showOptions(blockId, selectedState) {
-//   var officeList = document.getElementById(blockId).querySelector(".ctn_ul");
-//   var isDisplaying = officeList.style.display === "block";
-
-//   // Hide all dropdowns first
-//   var allLists = document.querySelectorAll(".ctn_ul");
-//   for (var i = 0; i < allLists.length; i++) {
-//     allLists[i].style.display = "none";
-//   }
-
-//   // Toggle the visibility of office options when clicking the button
-//   if (!isDisplaying) {
-//     officeList.innerHTML = ""; // Clear the list to avoid duplicates
-
-//     // Generate office options for the selected state
-//     var offices = stateOffices[selectedState];
-//     for (var i = 0; i < offices.length; i++) {
-//       var office = offices[i].office;
-//       var address = offices[i].address;
-//       var li = document.createElement("li");
-//       li.textContent = office;
-//       // Use a closure to maintain the correct value of 'address' for each office
-//       li.onclick = (function (address) {
-//         return function () {
-//           getAddress(this, address);
-//         };
-//       })(address);
-//       officeList.appendChild(li);
-//     }
-
-//     // Show the dropdown
-//     officeList.style.display = "block";
-//   }
-// }
 
 function showOptions(blockId, selectedState) {
     var officeList = document.getElementById(blockId).querySelector(".ctn_ul");
@@ -303,7 +268,7 @@ function showOptions(blockId, selectedState) {
     
     office = liElement.innerHTML
     idInput.value = address;
-    updateMapWithAddress(address);
+    updateMapWithAddress(address, office);
     
 
   }
@@ -325,7 +290,6 @@ async function initMap() {
   placeTag.className = "price-tag";
   const markerOptions = {
       position: coordinates,
-      // icon: "./assets/marker.png",
       icon: {
         url: "./assets/marker.png", // Ruta a la imagen personalizada
         labelOrigin: new google.maps.Point(10, -10), // Ajustar la posición del texto (horizontal, vertical)
@@ -336,26 +300,26 @@ async function initMap() {
   }
 
   marker = new google.maps.Marker(markerOptions);
-
   marker.setMap(map)
-  
-
- 
   initAutoCompleted()
 
 }
 
-function updateMapWithAddress(address) {
+function updateMapWithAddress(address, office) {
     if (typeof google === "undefined" || typeof google.maps === "undefined") {
       return;
     }
-  
+
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: address }, function (results, status) {
       if (status === "OK") {
         var location = results[0].geometry.location;
         map.setCenter(location);
         marker.setPosition(location);
+
+        if(office === "undefined"){
+          return marker.setLabel(null)
+        }
         marker.setLabel(office)
       } else {
         console.error("Geocode was not successful for the following reason:", status);
@@ -366,7 +330,7 @@ function updateMapWithAddress(address) {
 
   function initAutoCompleted() {
     autoComplete = new google.maps.places.Autocomplete(idInput);
-    marker.setLabel(null)
+    marker.setLabel("Andares")
     autoComplete.addListener("place_changed", function () {
       const place = autoComplete.getPlace();
       if (place && place.geometry) {
@@ -375,20 +339,4 @@ function updateMapWithAddress(address) {
     });
   }
   
-
-
-// function initAutoCompleted(){
-
-//     autoComplete = new google.maps.places.Autocomplete(idInput)
-      
-//     autoComplete.addListener("place_changed", function(){
-//         const place = autoComplete.getPlace()
-//         map.setCenter(place.geometry.location)
-//         marker.setPosition(place.geometry.location)
-//         // marker.title = office
-//     })
-// }
-
-
-
 initMap();
