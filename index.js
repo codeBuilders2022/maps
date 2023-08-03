@@ -261,14 +261,21 @@ function showOptions(blockId, selectedState) {
   
     // Hide all dropdowns first
     var allLists = document.querySelectorAll(".ctn_ul");
+    var allListsH3 = document.querySelectorAll("h3");
     for (var i = 0; i < allLists.length; i++) {
       allLists[i].style.display = "none";
+      allListsH3[i].style.color = "black";
+
     }
   
     // Toggle the visibility of office options when clicking the button
     if (!isDisplaying) {
       officeList.innerHTML = ""; // Clear the list to avoid duplicates
-  
+      //change select color
+      const divElement = document.getElementById(blockId);
+      const h3Element = divElement.querySelector("h3");
+      h3Element.style.color = "#00AEB4"
+      console.log("h3Element",h3Element.textContent);
       // Generate office options for the selected state
       var offices = stateOffices[selectedState];
       for (var i = 0; i < offices.length; i++) {
@@ -288,13 +295,17 @@ function showOptions(blockId, selectedState) {
       // Show the dropdown
       officeList.style.display = "block";
     }
+    
   }
   
 
   function getAddress(liElement, address) {
+    
     office = liElement.innerHTML
     idInput.value = address;
     updateMapWithAddress(address);
+    
+
   }
   
 
@@ -310,9 +321,17 @@ async function initMap() {
     zoom: 17,
   });
 
+  const placeTag = document.createElement("div");
+  placeTag.className = "price-tag";
   const markerOptions = {
       position: coordinates,
-      icon: "./assets/marker.png",
+      // icon: "./assets/marker.png",
+      icon: {
+        url: "./assets/marker.png", // Ruta a la imagen personalizada
+        labelOrigin: new google.maps.Point(10, -10), // Ajustar la posición del texto (horizontal, vertical)
+      },
+      content: placeTag,
+     
     //   animation: google.maps.Animation.BOUNCE
   }
 
@@ -320,6 +339,8 @@ async function initMap() {
 
   marker.setMap(map)
   
+
+ 
   initAutoCompleted()
 
 }
