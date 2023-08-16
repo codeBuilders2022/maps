@@ -276,6 +276,23 @@ function showOptions(blockId, selectedState) {
 
   const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let labelIndex = 0;
+
+
+
+
+
+// Función para ocultar los marcadores por defecto
+function ocultarMarcadoresPorDefecto() {
+  map.setOptions({
+    styles: [{
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }]
+  });
+}
   
 
 async function initMap() {
@@ -302,7 +319,21 @@ async function initMap() {
   marker = new google.maps.Marker(markerOptions);
   marker.setMap(map)
   initAutoCompleted()
+  ocultarMarcadoresPorDefecto()
 
+}
+
+// Función para ocultar los marcadores por defecto
+function ocultarMarcadoresPorDefecto() {
+  map.setOptions({
+    styles: [{
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }]
+  });
 }
 
 function updateMapWithAddress(address, office) {
