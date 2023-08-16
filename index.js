@@ -265,12 +265,9 @@ function showOptions(blockId, selectedState) {
   
 
   function getAddress(liElement, address) {
-    
     office = liElement.innerHTML
     idInput.value = address;
     updateMapWithAddress(address, office);
-    
-
   }
   
 
@@ -302,7 +299,21 @@ async function initMap() {
   marker = new google.maps.Marker(markerOptions);
   marker.setMap(map)
   initAutoCompleted()
+  ocultarMarcadoresPorDefecto()
 
+}
+
+// Función para ocultar los marcadores por defecto
+function ocultarMarcadoresPorDefecto() {
+  map.setOptions({
+    styles: [{
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }]
+  });
 }
 
 function updateMapWithAddress(address, office) {
