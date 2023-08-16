@@ -265,34 +265,14 @@ function showOptions(blockId, selectedState) {
   
 
   function getAddress(liElement, address) {
-    
     office = liElement.innerHTML
     idInput.value = address;
     updateMapWithAddress(address, office);
-    
-
   }
   
 
   const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let labelIndex = 0;
-
-
-
-
-
-// Función para ocultar los marcadores por defecto
-function ocultarMarcadoresPorDefecto() {
-  map.setOptions({
-    styles: [{
-      featureType: "poi",
-      elementType: "labels",
-      stylers: [
-        { visibility: "off" }
-      ]
-    }]
-  });
-}
   
 
 async function initMap() {
